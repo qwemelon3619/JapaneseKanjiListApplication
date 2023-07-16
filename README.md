@@ -1,0 +1,2 @@
+# JapaneseKanjiListApplication
+JapaneseKanjiListApplication
