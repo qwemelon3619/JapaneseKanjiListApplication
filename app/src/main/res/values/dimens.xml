@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="KanjiCard_Kanji_Margin">5dp</dimen>
+    <dimen name="KanjiCard_width">170dp</dimen>
+    <dimen name="KanjiCard_height">130dp</dimen>
+    <dimen name="KanjiCard_margin">10dp</dimen>
+    <dimen name="KanjiCard_Kanji_textSize">50sp</dimen>
+    <dimen name="KanjiCard_Korean_textSize">30sp</dimen>
+    <dimen name="KanjiCard_Elevation">2dp</dimen>
+</resources>

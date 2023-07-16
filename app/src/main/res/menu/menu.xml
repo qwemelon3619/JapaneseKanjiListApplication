@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/HomePage"
+        android:enabled="true"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"/>
+
+    <item
+        android:id="@+id/LearningPage"
+        android:enabled="true"
+        android:title="Learn"
+        android:icon="@drawable/baseline_menu_book_24"/>
+
+    <item
+        android:id="@+id/SettingPage"
+        android:enabled="true"
+        android:title="Setting"
+        android:icon="@drawable/baseline_test_24"/>
+
+</menu>

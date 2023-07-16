@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/learningFragment">
+
+    <fragment
+        android:id="@+id/learningFragment"
+        android:name="com.example.sampleprojecct.LearningFragment.LearningFragment"
+        android:label="fragment_learning"
+        tools:layout="@layout/fragment_learning" />
+    <fragment
+        android:id="@+id/selectionFragment"
+        android:name="com.example.sampleprojecct.SelectionFragment.SelectionFragment"
+        android:label="fragment_selection"
+        tools:layout="@layout/fragment_selection" />
+</navigation>
