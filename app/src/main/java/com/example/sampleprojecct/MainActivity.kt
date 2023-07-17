@@ -13,9 +13,6 @@ import com.example.sampleprojecct.SelectionFragment.SelectionFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
-fun main(){
-
-}
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,11 +23,12 @@ class MainActivity : AppCompatActivity() {
         val learningFragment = LearningFragment()
         val selectionFragment = SelectionFragment()
         val settingFragement = SettingFragment()
-        val transaction = supportFragmentManager.beginTransaction()
+        var transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.MainFragment,selectionFragment)
         val a =findViewById<NavigationBarView>(R.id.bottomNavigationView)
+
         a.setOnItemSelectedListener{ item ->
-            val transaction = supportFragmentManager.beginTransaction()
+            transaction = supportFragmentManager.beginTransaction()
             when(item.itemId) {
                 R.id.LearningPage -> {
                     Log.i("FragmentManager","change to Main")

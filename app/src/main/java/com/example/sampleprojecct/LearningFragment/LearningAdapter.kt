@@ -1,17 +1,20 @@
 package com.example.sampleprojecct.LearningFragment
 
+import android.location.GnssAntennaInfo.Listener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleprojecct.R
+import com.example.sampleprojecct.database.KanjiWord
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
-class LearningAdapter(private val dataSet: ArrayList<LearningViewData>) :
+class LearningAdapter(private val dataSet: List<KanjiWord>) :
     RecyclerView.Adapter<LearningAdapter.ViewHolder>() {
     private val adapterScope = CoroutineScope(Dispatchers.Default)
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
@@ -19,6 +22,8 @@ class LearningAdapter(private val dataSet: ArrayList<LearningViewData>) :
     class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
         val kanji: TextView= itemview.findViewById(R.id.kanji)
         val kanjiKorean: TextView = itemview.findViewById(R.id.kanji_korean)
+
+
     }
 
     // Create new views (invoked by the layout manager)
@@ -36,9 +41,10 @@ class LearningAdapter(private val dataSet: ArrayList<LearningViewData>) :
         // contents of the view with that element
         val currentItem = dataSet[position]
         viewHolder.kanji.text = currentItem.kanji
-        viewHolder.kanjiKorean.text = currentItem.kanjiKorean
+        viewHolder.kanjiKorean.text = currentItem.mean
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
+
 }
