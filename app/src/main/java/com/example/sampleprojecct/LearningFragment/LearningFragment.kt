@@ -1,19 +1,15 @@
 package com.example.sampleprojecct.LearningFragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sampleprojecct.R
 import com.example.sampleprojecct.database.KanjiDatabase
-import com.example.sampleprojecct.database.KanjiWord
 import com.example.sampleprojecct.databinding.FragmentLearningBinding
 
 /**
@@ -48,15 +44,20 @@ class LearningFragment : Fragment() {
 //        for(i in kanji.indices){
 //            newArrayList.add(LearningViewData(kanji[i],mean[i])
 //        }
-        LearningViewModel.getWordsFromDatabase2()
-        LearningViewModel._kanjilist.observe(viewLifecycleOwner) {
-            it?.let {
-                val adpter = LearningAdapter(it)
-                binding.kanjiCardGrid.adapter = adpter
+        LearningViewModel.initalizeWordlist()
+
+        LearningViewModel._wordlistOnView.observe(viewLifecycleOwner){
+            it?.let{
+                val adapter = LearningAdapter(it)
+                binding.kanjiCardGrid.adapter = adapter
             }
         }
-
-
+        binding.KanjiNext.setOnClickListener {
+            LearningViewModel.nextPageClicked()
+        }
+        binding.KanjiPrevious.setOnClickListener {
+            LearningViewModel.previousPageClicked()
+        }
 //        return inflater.inflate(R.layout.fragment_learning, container, false)
         return binding.root
 
