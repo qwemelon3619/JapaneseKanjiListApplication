@@ -1,10 +1,10 @@
 package com.example.sampleprojecct.LearningFragment
 
-import android.location.GnssAntennaInfo.Listener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleprojecct.R
 import com.example.sampleprojecct.database.KanjiWord
@@ -48,3 +48,4 @@ class LearningAdapter(private val dataSet: List<KanjiWord>) :
     override fun getItemCount() = dataSet.size
 
 }
+

@@ -2,16 +2,16 @@ package com.example.sampleprojecct.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import org.jetbrains.annotations.NotNull
+import java.math.BigInteger
 
-@Entity(tableName = "Kanji_word_table")
+@Entity(tableName = "KanjiList.db")
 data class KanjiWord(
     @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name="index")
-    val index: Int?=null,
-    @ColumnInfo(name = "kanji")
-    val kanji: String?,
-    @ColumnInfo(name = "mean")
+    @ColumnInfo(name = "Kanji")
+    val kanji: String,
+    @ColumnInfo(name = "Korean")
     val mean: String?,
-    @ColumnInfo(name = "level")
+    @ColumnInfo(name = "Level")
     val level: String?,
 )

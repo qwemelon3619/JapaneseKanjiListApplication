@@ -1,25 +1,20 @@
 package com.example.sampleprojecct.LearningFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleprojecct.R
 import com.example.sampleprojecct.database.KanjiDatabase
 import com.example.sampleprojecct.database.KanjiWord
 import com.example.sampleprojecct.databinding.FragmentLearningBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 /**
  * A simple [Fragment] subclass.
@@ -45,8 +40,6 @@ class LearningFragment : Fragment() {
         val LearningViewModel = ViewModelProvider(this,viewModelFactory).get(LearningViewModel::class.java)
 
         val manager= GridLayoutManager(activity,2)
-
-
         // Inflate the layout for this fragment
         binding.kanjiCardGrid.layoutManager = manager
 //        newArrayList = arrayListOf()
@@ -55,9 +48,14 @@ class LearningFragment : Fragment() {
 //        for(i in kanji.indices){
 //            newArrayList.add(LearningViewData(kanji[i],mean[i])
 //        }
-        val data = LearningViewModel.getWordByLevel("소학교2학년")
-        val adapter = LearningAdapter()
-        binding.kanjiCardGrid.adapter = adapter
+        LearningViewModel.getWordsFromDatabase2()
+        LearningViewModel._kanjilist.observe(viewLifecycleOwner) {
+            it?.let {
+                val adpter = LearningAdapter(it)
+                binding.kanjiCardGrid.adapter = adpter
+            }
+        }
+
 
 //        return inflater.inflate(R.layout.fragment_learning, container, false)
         return binding.root
