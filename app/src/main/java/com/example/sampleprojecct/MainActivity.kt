@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 //        transaction.replace(R.id.MainFragment,selectionFragment)
 //        transaction.commit()
 
-        val navigationBarView =findViewById<NavigationBarView>(R.id.bottomNavigationView)
+        val navigationBarView = findViewById<NavigationBarView>(R.id.bottomNavigationView)
 
         navigationBarView.setOnItemSelectedListener{ item ->
             when(item.itemId) {
@@ -71,6 +71,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    fun setIteminMenu(){
+        val navigationBarView = findViewById<NavigationBarView>(R.id.bottomNavigationView)
+        navigationBarView.selectedItemId = R.id.HomePage
     }
 
 }

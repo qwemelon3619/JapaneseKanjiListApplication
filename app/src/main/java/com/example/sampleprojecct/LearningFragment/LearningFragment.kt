@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sampleprojecct.R
@@ -45,6 +46,13 @@ class LearningFragment : Fragment() {
 //            newArrayList.add(LearningViewData(kanji[i],mean[i])
 //        }
         LearningViewModel.initalizeWordlist()
+
+        setFragmentResultListener("PartSelection") { key, bundle ->
+            val level :Int = bundle.getInt("level")
+            val page : Int = bundle.getInt("page")
+            LearningViewModel.getWordsFromDatabase(level,page)
+        }
+
 
         LearningViewModel._wordlistOnView.observe(viewLifecycleOwner){
             it?.let{
